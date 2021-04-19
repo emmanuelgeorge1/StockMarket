@@ -1,0 +1,53 @@
+<div class="container">
+  <div>
+    <div class="row pt-3 pb-3" *ngIf="lstCard!=null && lstCard.length>0">
+      <div class="col-md-4 col-lg-4 col-sm-12 p-3" style="align-items: center" *ngFor="let obj of lstCard;let i=index">
+        <div class="card" style="background-color: beige;">
+          <div class="card-body">
+            <img *ngIf="obj.stockSymbol=='GOOGL'" align="right" class="card-img-top responsive text-center"
+              src="../assets/GOOGL.png">
+            <img *ngIf="obj.stockSymbol=='FB'" align="right" class="card-img-top responsive text-center"
+              src="../assets/FB.png">
+            <img *ngIf="obj.stockSymbol=='AMZN'" align="right" class="card-img-top responsive text-center"
+              src="../assets/AMZN.svg">
+            <h5 class="card-title">{{obj.stockSymbol}}</h5>
+            <h1>
+              <p class="card-text">{{obj.stockPrice}}&nbsp; {{obj.stockCurrency}}</p>
+            </h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <h5 class="pt-3"> Stock Details Table</h5>
+  <table   [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table table-striped row-border hover pl-1 pr-1">
+
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col">Symbols</th>
+        <th scope="col">Market Cap</th>
+        <th scope="col">Action</th>
+        <th scope="col">Current Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="lstStockDetails!=null && lstStockDetails.length>0">
+        <tr *ngFor="let obj of lstStockDetails; let i=index">
+          <td>{{obj.companyName}}</td>
+          <td>{{obj.symbols}}</td>
+          <td>{{obj.marketCap}}</td>
+          <td *ngIf="!obj.savedFlag"><button type="submit" class="btn btn-success"
+              (click)="saveData(obj)">SaveData</button></td>
+          <td *ngIf="obj.savedFlag"><button type="submit" class="pr-5 btn btn-primary" 
+            (click)="view(obj)">view</button>
+            <button type="submit"  class="btn btn-danger" 
+              (click)="delete(obj)">delete</button></td>
+          <td>{{obj.currentPrice}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

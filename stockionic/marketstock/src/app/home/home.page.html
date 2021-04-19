@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Stock Market
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container" *ngIf="!tableFlag">
+    <ion-grid>
+      <ion-row *ngIf="lstCard!=null && lstCard.length>0">
+        <ion-col *ngFor="let obj of lstCard;let i=index">
+          <ion-card style="background-color: beige;">
+            <ion-card-header>
+              <ion-card-title>{{obj.stockSymbol}}</ion-card-title>
+              <ion-img style="width: 60px; height: 60px;" *ngIf="obj.stockSymbol=='GOOGL'" class="ion-float-right"
+                src="../assets/GOOGL.png"></ion-img>
+              <ion-img style="width: 60px; height: 60px;" *ngIf="obj.stockSymbol=='FB'" class="ion-float-right"
+                src="../assets/FB.png"></ion-img>
+              <ion-img style="width: 60px; height: 60px;" *ngIf="obj.stockSymbol=='AMZN'" class="ion-float-right"
+                src="../assets/AMZN.svg"></ion-img>
+            </ion-card-header>
+            <ion-card-content class="ion-text-center">
+              <ion-title size="small">{{obj.stockPrice}} {{obj.stockCurrency}} </ion-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        <ion-button (click)="tableFlag=tableFlag?false:true">View Data</ion-button>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-margin" *ngIf="tableFlag">
+    <ion-grid class="ion-margin">
+      <ion-row style="background:darkgray">
+        <ion-col>
+          <h5>Company Name</h5>
+        </ion-col>
+        <ion-col>
+          <h5>Symbol</h5>
+        </ion-col>
+      </ion-row>
+      <ng-container *ngIf="lstStockDetails!=null && lstStockDetails.length>0">
+        <ion-row *ngFor="let obj of lstStockDetails; let i=index">
+          <ion-col>{{obj.companyName}}</ion-col>
+          <ion-col>{{obj.symbols}}</ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-grid>
+  </ion-content>

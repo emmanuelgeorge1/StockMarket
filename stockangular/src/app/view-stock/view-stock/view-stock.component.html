@@ -1,0 +1,46 @@
+<body><form class="bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10">
+      <h2>STOCK DETAILS</h2>
+      </div>
+      <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary btn-sm " 
+      (click)="home()">Back</button>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label  class="col-form-label">Company Name:</label>
+      </div>
+      <div class="col-sm-4">
+        <label class="col-form-label">{{stockDetails.companyName}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label class="col-form-label">Symbol:</label>
+      </div>
+      <div class="col-sm-4">
+        <label class="col-form-label">{{stockDetails.symbols}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label  class="col-form-label">Market Capital:</label>
+      </div>
+      <div class="col-sm-4">
+        <label class="col-form-label">{{stockDetails.marketCap}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label class="col-form-label">Current price:</label>
+      </div>
+      <div class="col-sm-4">
+        <label class="col-form-label">{{stockDetails.currentPrice}}</label>
+      </div>
+    </div>
+  </div>
+  </form>
+</body>
